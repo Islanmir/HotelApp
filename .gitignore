@@ -1,0 +1,59 @@
+## Visual Studio e .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.vscode/
+*.swp
+*.cache
+*.tmp
+*.log
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Mac e Linux
+.DS_Store
+*.DS_Store
+*.AppleDouble
+*.LSOverride
+*~
+.nfs*
+
+# Testes
+TestResults/
+*.TestResult.xml
+coverage*
+
+# Node (em caso de bibliotecas Blazor)
+node_modules/
+
+# Publicação
+publish/
+wwwroot/dist/
