@@ -1,0 +1,31 @@
+name: Deploy Blazor WebAssembly to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Faz checkout do código do repositório
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2️⃣ Instala o .NET 9
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      # 3️⃣ Publica o projeto Blazor WebAssembly (HotelWeb)
+      - name: Publish Blazor WebAssembly
+        run: dotnet publish ./HotelWeb/HotelWeb.csproj -c Release -o build_output
+
+      # 4️⃣ Faz o deploy automático para GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build_output/wwwroot
