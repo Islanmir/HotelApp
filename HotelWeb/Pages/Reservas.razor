@@ -1,0 +1,78 @@
+@page "/reservas"
+@inject HttpClient Http
+
+<h3>Reservas</h3>
+
+@if (reservas is null)
+{
+    <p><em>A carregar...</em></p>
+}
+else if (reservas.Count == 0)
+{
+    <p><em>Não há reservas registadas.</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cliente</th>
+                <th>Quarto</th>
+                <th>Check-in</th>
+                <th>Check-out</th>
+                <th>Observações</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var r in reservas)
+        {
+            <tr>
+                <td>@r.Id</td>
+                <td>@r.Cliente?.Nome</td>
+                <td>@r.QuartoNumero</td>
+                <td>@r.CheckIn.ToShortDateString()</td>
+                <td>@r.CheckOut.ToShortDateString()</td>
+                <td>@r.Observacoes</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Reserva>? reservas;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // 👇 importante o "/" inicial para aceder à raiz da API
+            reservas = await Http.GetFromJsonAsync<List<Reserva>>("/api/reservas");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao carregar reservas: {ex.Message}");
+            reservas = new List<Reserva>();
+        }
+    }
+
+    // 👇 Estrutura dos dados vinda da API
+    public class Cliente
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; } = default!;
+    }
+
+    public class Reserva
+    {
+        public int Id { get; set; }
+        public int ClienteId { get; set; }
+        public Cliente? Cliente { get; set; }
+        public string QuartoNumero { get; set; } = default!;
+        public DateTime CheckIn { get; set; }
+        public DateTime CheckOut { get; set; }
+        public string? Observacoes { get; set; }
+    }
+}
+

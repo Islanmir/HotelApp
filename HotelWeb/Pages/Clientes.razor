@@ -1,0 +1,65 @@
+@page "/clientes"
+@inject HttpClient Http
+
+<h3>Clientes</h3>
+
+@if (clientes is null)
+{
+    <p><em>A carregar...</em></p>
+}
+else if (clientes.Count == 0)
+{
+    <p><em>Não há clientes registados.</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var c in clientes)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Nome</td>
+                <td>@c.Email</td>
+                <td>@c.Telefone</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Cliente>? clientes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // 👇 Aqui está a correção principal: o "/" inicial
+            clientes = await Http.GetFromJsonAsync<List<Cliente>>("/api/clientes");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao carregar clientes: {ex.Message}");
+            clientes = new List<Cliente>();
+        }
+    }
+
+    // 👇 Classe usada para mapear o JSON vindo da API
+    public class Cliente
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; } = default!;
+        public string? Email { get; set; }
+        public string? Telefone { get; set; }
+    }
+}
+
