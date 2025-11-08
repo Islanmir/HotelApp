@@ -21,10 +21,11 @@ ligados a uma **base de dados MySQL**.
 
 ## 🧱 Estrutura do Projeto
 
+```
 Hotel/
-├── HotelApi/ → Backend (.NET 9 Web API + EF Core + MySQL)
-└── HotelWeb/ → Frontend (Blazor WebAssembly)
-
+├── HotelApi/   → Backend (.NET 9 Web API + EF Core + MySQL)
+└── HotelWeb/   → Frontend (Blazor WebAssembly)
+```
 
 ---
 
@@ -39,52 +40,93 @@ Hotel/
 
 ---
 
-▶️ Como Executar Localmente
-1️⃣ Clonar o repositório
-git clone https://github.com/islanmir/HotelApp.git
+## ▶️ Como Executar Localmente
 
-2️⃣ Executar o backend
+### 1️⃣ Clonar o repositório
+```bash
+git clone https://github.com/islanmir/HotelApp.git
+```
+
+### 2️⃣ Instalar e configurar o MySQL
+- Instalar o **MySQL Server** (ou **MySQL Workbench**).  
+- Criar uma base de dados, por exemplo:  
+  ```sql
+  CREATE DATABASE hotelapp;
+  ```
+
+### 3️⃣ Configurar a ligação à base de dados
+- No ficheiro **HotelApi/appsettings.json**, atualizar a secção `"DefaultConnection"` com os teus dados MySQL:
+  ```json
+  "ConnectionStrings": {
+    "DefaultConnection": "server=localhost;port=3306;database=hotelapp;user=root;password=AS_TUA_PASSWORD"
+  }
+  ```
+
+### 4️⃣ Instalar a ferramenta do Entity Framework
+No diretório do projeto `HotelApi`, executar:
+```bash
+dotnet tool install --global dotnet-ef
+```
+
+### 5️⃣ Criar / atualizar a base de dados
+Ainda dentro de `HotelApi`, correr:
+```bash
+dotnet ef database update
+```
+
+---
+
+### 6️⃣ Executar o backend
+```bash
 cd HotelApi
 dotnet run
+```
+A API estará disponível em:  
+👉 http://localhost:5026
 
-A API estará disponível em:
-http://localhost:5026
+---
 
-3️⃣ Executar o frontend
+### 7️⃣ Executar o frontend
+```bash
 cd ../HotelWeb
 dotnet run
+```
+A aplicação Blazor estará disponível em:  
+👉 http://localhost:5201
 
-A aplicação Blazor estará disponível em:
-http://localhost:5201
+---
 
-🌍 Versão Online (Frontend)
-O frontend é publicado automaticamente através do GitHub Actions e pode ser acedido aqui:
+## 🌍 Versão Online (Frontend)
 
-👉 (https://islanmir.github.io/HotelApp/)
+O **frontend** é publicado automaticamente através do **GitHub Actions** e pode ser acedido aqui:  
+👉 [https://islanmir.github.io/HotelApp/](https://islanmir.github.io/HotelApp/)
 
-(Apenas o frontend é executado online — a API deve correr localmente para persistência de dados.)
+> ⚠️ Apenas o frontend é executado online — a **API deve correr localmente** para persistência de dados.
 
-🔁 Deploy Automático
+---
 
-O fluxo de publicação é gerido por GitHub Actions, que:
-Compila o projeto Blazor (HotelWeb);
-Publica os ficheiros de produção;
-Atualiza automaticamente o branch gh-pages;
-Disponibiliza o site em GitHub Pages.
+## 🔁 Deploy Automático
 
-O ficheiro do workflow encontra-se em:
-.github/workflows/deploy.yml
+O fluxo de publicação é gerido por **GitHub Actions**, que:
+- Compila o projeto Blazor (`HotelWeb`);
+- Publica os ficheiros de produção;
+- Atualiza automaticamente o branch `gh-pages`;
+- Disponibiliza o site em **GitHub Pages**.
 
-✅ Estado do Projeto
+O ficheiro do workflow encontra-se em:  
+`.github/workflows/deploy.yml`
+
+---
+
+## ✅ Estado do Projeto
 
 <img width="326" height="20" alt="image" src="https://github.com/user-attachments/assets/185d095f-64f8-4d12-98c8-bd2704b64de0" />
 
+---
 
+## 🧑‍💻 Autor
 
-🧑‍💻 Autor
+**Raquel Monteiro**  
+Projeto criado para estudo e portfólio.  
 
-Raquel Monteiro
-
-Projeto criado para estudo e portfólio.
-
-“Aprender é transformar curiosidade em criação.” ✨
+> “Aprender é transformar curiosidade em criação.” ✨
