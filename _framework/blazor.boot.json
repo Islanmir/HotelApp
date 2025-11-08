@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "HotelWeb",
   "resources": {
-    "hash": "sha256-U0zQQ0o4G0BjYwsYN/gKZ2Xv3B1oYVIKhdktP3y6MH0=",
+    "hash": "sha256-3rh9XzePnQyOxpcB0yZRknabm+XmjHpoOgZUIOtOGCQ=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.gq23rahbum.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.kk052fg825.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
@@ -36,7 +36,7 @@
       "System.Text.Json.nfx6s832ck.wasm": "System.Text.Json.wasm",
       "System.Text.RegularExpressions.5gjltihx5v.wasm": "System.Text.RegularExpressions.wasm",
       "System.Private.CoreLib.8vzfz6jp88.wasm": "System.Private.CoreLib.wasm",
-      "HotelWeb.c5b783zik7.wasm": "HotelWeb.wasm",
+      "HotelWeb.grl4fmj40o.wasm": "HotelWeb.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.native.l4ptthxatg.js": "dotnet.native.js",
       "dotnet.native.d2w7colv7e.wasm": "dotnet.native.wasm",
@@ -95,7 +95,7 @@
       "System.Text.Encodings.Web.9rjk8as0i7.wasm": "sha256-+y7W1KnwkH6Qwrz33TSxWAn666Cbuzvn6QwDB/OpQgI=",
       "System.Text.Json.nfx6s832ck.wasm": "sha256-PaUiTGEAWpmpBoNQBQG4G044wn6I9CKQKZKVBLBsY2w=",
       "System.Text.RegularExpressions.5gjltihx5v.wasm": "sha256-tWq9vht0rY9iM6tvHI4CaV2Nogm0sR+EJEOy72TVrIk=",
-      "HotelWeb.c5b783zik7.wasm": "sha256-0CfuXdckBIaT/SPVms7cdbY4mjomy+CQCb0zRixyAy8="
+      "HotelWeb.grl4fmj40o.wasm": "sha256-LP5U1jbHnaoNHy/VeI+CU5a1h6ceIuRknBt9nG/m9q0="
     }
   },
   "cacheBootResources": true,
